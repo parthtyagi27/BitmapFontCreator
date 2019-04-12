@@ -8,11 +8,15 @@ import javafx.scene.Scene;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.awt.*;
+import java.io.FileInputStream;
+
 public class MainWindow extends Application
 {
-    public static final int WIDTH = 750, HEIGHT = 400;
+    public static final int WIDTH = 525, HEIGHT = 400;
     public static Stage primaryStage;
     public static String path;
+    public static int fontSize;
 
     @Override
     public void start(Stage primaryStage) throws Exception
@@ -24,11 +28,9 @@ public class MainWindow extends Application
         primaryStage.show();
     }
 
-    public static void setFile()
+    public static void generateFont() throws Exception
     {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Font File");
-        String path = fileChooser.showOpenDialog(primaryStage).getAbsolutePath();
+        Font font = Font.createFont(Font.TRUETYPE_FONT, new FileInputStream(path));
     }
 
     public static void main(String[] args) {
